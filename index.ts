@@ -1,5 +1,5 @@
 import { createSchema, createYoga } from "graphql-yoga";
-
+import { schema } from "./src/graphql/users/index";
 let users = [
   { id: 1, name: "John", email: "john@example.com", age: 30 },
   { id: 2, name: "Jane", email: "jane@example.com", age: 25 },
@@ -31,44 +31,7 @@ const deleteUser = (id: number) => {
   return users[userIndex];
 };
 const yoga = createYoga({
-  schema: createSchema({
-    typeDefs: `
-      type User {
-        id: ID!
-        name: String!
-        email: String!
-        age: Int!
-      }
-
-      type Query {
-        users: [User] #obtener todos los usuarios
-        user(id: ID!): User #obtener un usuario por id 
-      }
-
-      type Mutation {
-        addUser(name: String!, email: String!, age: Int!): User #agregar un usuario
-        updateUser(id: ID!, name: String!, email: String!, age: Int!): User #actualizar un usuario
-        deleteUser(id: ID!): User #borrar un usuario
-      }
-
-    `,
-    resolvers: {
-      Query: {
-        users: () => users,
-        user: (_, { id }) => findUserById(Number(id)),
-      },
-      Mutation: {
-        addUser: (_, { name, email, age }) => {
-          const newUser = { id: users.length + 1, name, email, age };
-          users.push(newUser);
-          return newUser;
-        },
-        updateUser: (_, { id, name, email, age }) =>
-          updateUser(Number(id), name, email, Number(age)),
-        deleteUser: (_, { id }) => deleteUser(Number(id)),
-      },
-    },
-  }),
+schema: schema()
 });
 
 const server = Bun.serve({

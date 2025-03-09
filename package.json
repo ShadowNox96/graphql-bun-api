@@ -4,16 +4,20 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --watch run index.ts" 
+    "dev": "bun --watch run index.ts", 
+    "migrate": "bun run src/db/mysql/migrate.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "drizzle-kit": "^0.30.5"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
+    "drizzle-orm": "^0.40.0",
     "graphql": "^16.10.0",
-    "graphql-yoga": "^5.13.1"
+    "graphql-yoga": "^5.13.1",
+    "mysql2": "^3.13.0"
   }
 }
