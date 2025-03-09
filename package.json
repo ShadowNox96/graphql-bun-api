@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "bun --watch run index.ts", 
-    "migrate": "bun run src/db/mysql/migrate.ts"
+    "migrations": "bun run src/db/mysql/migrate.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
