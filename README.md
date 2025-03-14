@@ -35,6 +35,6 @@ MIT
 
 ## About bun
 
-## Project debveloped with bun by [shadownox97](https://github.com/shadownox97)
+## Project debveloped with bun by [shadownox96](https://github.com/shadownox96)
 
 This project was created using `bun init` in bun v1.2.4. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
